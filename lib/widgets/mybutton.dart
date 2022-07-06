@@ -14,7 +14,7 @@ class MyButton extends StatelessWidget {
           name,
           style: TextStyle(color: Colors.white),
         ),
-        color: Color.fromRGBO(50, 75, 205, 1),
+        color: Color.fromARGB(255, 52, 58, 64),
         onPressed: onPressed,
       ),
     );

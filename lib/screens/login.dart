@@ -201,12 +201,12 @@ class _LoginState extends State<Login> {
       body: Form(
         key: _formKey,
         child: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('images/loginBackground1.jpg'),
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.2), BlendMode.lighten))),
+          // decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //         image: AssetImage('images/loginBackground1.jpg'),
+          //         fit: BoxFit.cover,
+          //         colorFilter: ColorFilter.mode(
+          //             Colors.white.withOpacity(0.2), BlendMode.lighten))),
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
             child: Column(

@@ -28,135 +28,36 @@ final TextEditingController firstName = TextEditingController();
 final TextEditingController lastName = TextEditingController();
 final TextEditingController phoneNumber = TextEditingController();
 final TextEditingController houseAddress = TextEditingController();
-final TextEditingController role = TextEditingController();
+
 final TextEditingController companyName = TextEditingController();
-final TextEditingController registerNo = TextEditingController();
-final TextEditingController address = TextEditingController();
-final TextEditingController postcode = TextEditingController();
-final TextEditingController addressOffice = TextEditingController();
-final TextEditingController postcodeOffice = TextEditingController();
-final TextEditingController phoneOffice = TextEditingController();
-final TextEditingController emailOffice = TextEditingController();
+
+final TextEditingController year = TextEditingController();
+final TextEditingController position = TextEditingController();
+final TextEditingController monthlySalary = TextEditingController();
+final TextEditingController supervisorName = TextEditingController();
+final TextEditingController supervisorContact = TextEditingController();
 
 class _SignUpState extends State<SignUp> {
-  String? country;
-  String? state;
-  String? city;
-  String? countryOffice;
-  String? stateOffice;
-  String? cityOffice;
-  final List listCountry = ['Malaysia', 'China'];
-  final List listStateMY = [
-    'Johor',
-    'Kedah',
-    'Kelantan',
-    'Kuala Lumpur',
-    'Labuan',
-    'Melaka',
-    'Negeri Sembilan',
-    'Pahang',
-    'Perak',
-    'Perlis',
-    'Pulau Pinang',
-    'Sabah',
-    'Sarawak',
-    'Selangor',
-    'Terengganu'
+  String? joinedMonth;
+  String? companySector;
+  String gender = 'Male';
+  DateTime date = DateTime(2022, 07, 05);
+
+  final List listCompanySector = ['list1', 'list2'];
+  final List listJoinedMonth = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
   ];
-  final List listStateCN = [
-    'Anhui',
-    'Beijing',
-    'Chongqing',
-    'Fujian',
-    'Guangdong',
-    'Gansu',
-    'Guangxi',
-    'Guizhou',
-    'Henan',
-    'Hubei',
-    'Hebei',
-    'Hainan',
-    'Hong Kong',
-    'Heilongjiang',
-    'Hunan',
-    'Jilin',
-    'Jiangsu',
-    'Jiangxi',
-    'Liaoning',
-    'Macao',
-    'Inner Mongolia',
-    'Ningxia Hui',
-    'Qinghai',
-    'Sichuan',
-    'Shandong',
-    'Shanghai',
-    'Shaanxi',
-    'Shanxi',
-    'Tianjin',
-    'Taiwan',
-    'Xinjiang Uyghur',
-    'Tibet',
-    'Yunnan',
-    'Zhejiang'
-  ];
-  List listState = [];
-  List listCity = [];
-  final List listCountryOffice = ['Malaysia', 'China'];
-  final List listStateMYOffice = [
-    'Johor',
-    'Kedah',
-    'Kelantan',
-    'Kuala Lumpur',
-    'Labuan',
-    'Melaka',
-    'Negeri Sembilan',
-    'Pahang',
-    'Perak',
-    'Perlis',
-    'Pulau Pinang',
-    'Sabah',
-    'Sarawak',
-    'Selangor',
-    'Terengganu'
-  ];
-  final List listStateCNOffice = [
-    'Anhui',
-    'Beijing',
-    'Chongqing',
-    'Fujian',
-    'Guangdong',
-    'Gansu',
-    'Guangxi',
-    'Guizhou',
-    'Henan',
-    'Hubei',
-    'Hebei',
-    'Hainan',
-    'Hong Kong',
-    'Heilongjiang',
-    'Hunan',
-    'Jilin',
-    'Jiangsu',
-    'Jiangxi',
-    'Liaoning',
-    'Macao',
-    'Inner Mongolia',
-    'Ningxia Hui',
-    'Qinghai',
-    'Sichuan',
-    'Shandong',
-    'Shanghai',
-    'Shaanxi',
-    'Shanxi',
-    'Tianjin',
-    'Taiwan',
-    'Xinjiang Uyghur',
-    'Tibet',
-    'Yunnan',
-    'Zhejiang'
-  ];
-  List listStateOffice = [];
-  List listCityOffice = [];
 
   void submit() async {
     try {
@@ -203,13 +104,11 @@ class _SignUpState extends State<SignUp> {
         firstName.text.isEmpty &&
         lastName.text.isEmpty &&
         companyName.text.isEmpty &&
-        registerNo.text.isEmpty &&
-        address.text.isEmpty &&
-        postcode.text.isEmpty &&
-        addressOffice.text.isEmpty &&
-        postcodeOffice.text.isEmpty &&
-        phoneOffice.text.isEmpty &&
-        emailOffice.text.isEmpty) {
+        year.text.isEmpty &&
+        position.text.isEmpty &&
+        monthlySalary.text.isEmpty &&
+        supervisorName.text.isEmpty &&
+        supervisorContact.text.isEmpty) {
       _scaffoldKeyEmployer.currentState!.showSnackBar(
         SnackBar(
           content: Text("All flied are empty"),
@@ -269,46 +168,34 @@ class _SignUpState extends State<SignUp> {
           content: Text('Company Name is empty'),
         ),
       );
-    } else if (registerNo.text.isEmpty) {
+    } else if (year.text.isEmpty) {
       _scaffoldKeyEmployer.currentState!.showSnackBar(
         SnackBar(
-          content: Text('Registration No is empty'),
+          content: Text('Joined Year is empty'),
         ),
       );
-    } else if (address.text.isEmpty) {
+    } else if (position.text.isEmpty) {
       _scaffoldKeyEmployer.currentState!.showSnackBar(
         SnackBar(
-          content: Text('Registered Address is empty'),
+          content: Text('Position is empty'),
         ),
       );
-    } else if (postcode.text.isEmpty) {
+    } else if (monthlySalary.text.isEmpty) {
       _scaffoldKeyEmployer.currentState!.showSnackBar(
         SnackBar(
-          content: Text('Postcode of Registered Address is empty'),
+          content: Text('Monthly Salary is empty'),
         ),
       );
-    } else if (addressOffice.text.isEmpty) {
+    } else if (supervisorName.text.isEmpty) {
       _scaffoldKeyEmployer.currentState!.showSnackBar(
         SnackBar(
-          content: Text('Company Address is empty'),
+          content: Text('Supervisor Name is empty'),
         ),
       );
-    } else if (postcodeOffice.text.isEmpty) {
+    } else if (supervisorContact.text.isEmpty) {
       _scaffoldKeyEmployer.currentState!.showSnackBar(
         SnackBar(
-          content: Text('Postcode of Company Address is empty'),
-        ),
-      );
-    } else if (phoneOffice.text.isEmpty) {
-      _scaffoldKeyEmployer.currentState!.showSnackBar(
-        SnackBar(
-          content: Text('Company Phone is empty'),
-        ),
-      );
-    } else if (emailOffice.text.isEmpty) {
-      _scaffoldKeyEmployer.currentState!.showSnackBar(
-        SnackBar(
-          content: Text('Company Email is empty'),
+          content: Text('Supervisor Contact is empty'),
         ),
       );
     } else {
@@ -377,6 +264,106 @@ class _SignUpState extends State<SignUp> {
           SizedBox(
             height: 10,
           ),
+          Row(
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Gender :',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Row(
+                children: [
+                  Radio(
+                    value: 'Male',
+                    groupValue: gender,
+                    onChanged: (value) {
+                      setState(() {
+                        gender = value.toString();
+                      });
+                    },
+                  ),
+                  Text(
+                    'Male',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Radio(
+                    value: 'Female',
+                    groupValue: gender,
+                    onChanged: (value) {
+                      gender = value.toString();
+                    },
+                  ),
+                  Text(
+                    'Female',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Birth Date : ',
+                      style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                    ),
+                    Text(
+                      '${date.year}/${date.month}/${date.day}',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+                IconButton(
+                  onPressed: () async {
+                    DateTime? newDate = await showDatePicker(
+                      // builder: ((context, child) {
+                      //   return Theme(data: ThemeData(
+                      //     cardColor: Colors.red
+                      //   ), child: child,)
+                      // }),
+                      context: context,
+                      initialDate: date,
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime(2100),
+                    );
+
+                    if (newDate == null) return;
+
+                    setState(() => date = newDate);
+                  },
+                  icon: Icon(Icons.date_range),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           MyTextFormField(
             name: "Phone Number",
             controller: phoneNumber,
@@ -402,24 +389,9 @@ class _SignUpState extends State<SignUp> {
           SizedBox(
             height: 10,
           ),
-          MyTextFormField(controller: registerNo, name: 'Registration No'),
-          SizedBox(
-            height: 20,
-          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Registered Address',
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              MyTextFormField(controller: address, name: 'Address'),
-              SizedBox(
-                height: 10,
-              ),
               Container(
                 width: double.infinity,
                 height: 60,
@@ -433,7 +405,7 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     DropdownButton(
                       hint: Text(
-                        "Select Country",
+                        "Company Sector",
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 16,
@@ -441,19 +413,16 @@ class _SignUpState extends State<SignUp> {
                       ),
                       underline: SizedBox(),
                       style: TextStyle(color: Colors.black, fontSize: 16),
-                      value: country,
+                      value: companySector,
                       onChanged: (val) {
-                        state = null;
-                        listState =
-                            val == 'Malaysia' ? listStateMY : listStateCN;
                         setState(() {
-                          country = val as String;
+                          companySector = val as String;
                         });
                       },
-                      items: listCountry.map((valueCountry) {
+                      items: listCompanySector.map((valueCompanySector) {
                         return DropdownMenuItem(
-                          value: valueCountry,
-                          child: Text(valueCountry),
+                          value: valueCompanySector,
+                          child: Text(valueCompanySector),
                         );
                       }).toList(),
                     ),
@@ -476,7 +445,7 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     DropdownButton(
                       hint: Text(
-                        "Select State",
+                        "Joined Month",
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 16,
@@ -484,16 +453,16 @@ class _SignUpState extends State<SignUp> {
                       ),
                       underline: SizedBox(),
                       style: TextStyle(color: Colors.black, fontSize: 16),
-                      value: state,
+                      value: joinedMonth,
                       onChanged: (val) {
                         setState(() {
-                          state = val as String;
+                          joinedMonth = val as String;
                         });
                       },
-                      items: listState.map((valueState) {
+                      items: listJoinedMonth.map((valueJoinedMonth) {
                         return DropdownMenuItem(
-                          value: valueState,
-                          child: Text(valueState),
+                          value: valueJoinedMonth,
+                          child: Text(valueJoinedMonth),
                         );
                       }).toList(),
                     ),
@@ -503,199 +472,31 @@ class _SignUpState extends State<SignUp> {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                width: double.infinity,
-                height: 60,
-                padding: EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  children: [
-                    DropdownButton(
-                      hint: Text(
-                        "Select City",
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 16,
-                        ),
-                      ),
-                      underline: SizedBox(),
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                      value: city,
-                      onChanged: (val) {
-                        setState(() {
-                          city = val as String;
-                        });
-                      },
-                      items: listCity.map((valueCity) {
-                        return DropdownMenuItem(
-                          value: valueCity,
-                          child: Text(valueCity),
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              MyTextFormField(controller: postcode, name: 'Postcode'),
+              MyTextFormField(controller: year, name: 'Eg.2022'),
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Office Address',
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              MyTextFormField(controller: addressOffice, name: 'Address'),
+              MyTextFormField(controller: position, name: 'Position'),
               SizedBox(
                 height: 10,
               ),
-              Container(
-                width: double.infinity,
-                height: 60,
-                padding: EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  children: [
-                    DropdownButton(
-                      hint: Text(
-                        "Select Country",
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 16,
-                        ),
-                      ),
-                      underline: SizedBox(),
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                      value: countryOffice,
-                      onChanged: (val) {
-                        state = null;
-                        listStateOffice = val == 'Malaysia'
-                            ? listStateMYOffice
-                            : listStateCNOffice;
-                        setState(() {
-                          countryOffice = val as String;
-                        });
-                      },
-                      items: listCountryOffice.map((valueCountryOffice) {
-                        return DropdownMenuItem(
-                          value: valueCountryOffice,
-                          child: Text(valueCountryOffice),
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ),
-              ),
+              MyTextFormField(
+                  controller: monthlySalary, name: 'Monthly Salary'),
               SizedBox(
                 height: 10,
               ),
-              Container(
-                width: double.infinity,
-                height: 60,
-                padding: EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  children: [
-                    DropdownButton(
-                      hint: Text(
-                        "Select State",
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 16,
-                        ),
-                      ),
-                      underline: SizedBox(),
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                      value: stateOffice,
-                      onChanged: (val) {
-                        setState(() {
-                          stateOffice = val as String;
-                        });
-                      },
-                      items: listStateOffice.map((valueStateOffice) {
-                        return DropdownMenuItem(
-                          value: valueStateOffice,
-                          child: Text(valueStateOffice),
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ),
-              ),
+              MyTextFormField(
+                  controller: supervisorName, name: 'Supervisor Name'),
               SizedBox(
                 height: 10,
               ),
-              Container(
-                width: double.infinity,
-                height: 60,
-                padding: EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  children: [
-                    DropdownButton(
-                      hint: Text(
-                        "Select City",
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 16,
-                        ),
-                      ),
-                      underline: SizedBox(),
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                      value: cityOffice,
-                      onChanged: (val) {
-                        setState(() {
-                          cityOffice = val as String;
-                        });
-                      },
-                      items: listCityOffice.map((valueCityOffice) {
-                        return DropdownMenuItem(
-                          value: valueCityOffice,
-                          child: Text(valueCityOffice),
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              MyTextFormField(controller: postcodeOffice, name: 'Postcode'),
-              SizedBox(
-                height: 10,
-              ),
-              MyTextFormField(controller: phoneOffice, name: 'Office Phone'),
-              SizedBox(
-                height: 10,
-              ),
-              MyTextFormField(controller: emailOffice, name: 'Office Email'),
+              MyTextFormField(
+                  controller: supervisorContact, name: 'Supervisor Contact'),
             ],
           ),
         ],
@@ -716,7 +517,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget _buildCompanyInfoPart() {
+  Widget _buildCurrentJobPart() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
       width: double.infinity,
@@ -729,7 +530,7 @@ class _SignUpState extends State<SignUp> {
           ),
           isLoading == false
               ? MyButton(
-                  name: "SignUp",
+                  name: "Register",
                   onPressed: () {
                     vaildation();
                   },
@@ -761,7 +562,8 @@ class _SignUpState extends State<SignUp> {
               children: [
                 IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (ctx) => Login()));
                     },
                     icon: Icon(Icons.arrow_back))
               ],
@@ -773,7 +575,7 @@ class _SignUpState extends State<SignUp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "Register (E)",
+                  "Register",
                   style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
@@ -793,7 +595,7 @@ class _SignUpState extends State<SignUp> {
             height: 10,
           ),
           Container(
-            height: 1000,
+            height: 750,
             child: _buildBasicInfoPart(),
           ),
           Container(
@@ -803,9 +605,12 @@ class _SignUpState extends State<SignUp> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
           Container(
-            height: 1500,
-            child: _buildCompanyInfoPart(),
+            height: 750,
+            child: _buildCurrentJobPart(),
           ),
         ],
       ),

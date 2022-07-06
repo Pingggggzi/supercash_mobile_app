@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:supercash_mobile_app/screens/login.dart';
+import 'package:supercash_mobile_app/screens/settingsPage.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -24,14 +26,25 @@ class _HomepageState extends State<Homepage> {
           "Home",
           style: TextStyle(fontSize: 18.0),
         ),
+        bottom: PreferredSize(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+            child: Column(
+              children: [],
+            ),
+          ),
+          preferredSize: Size.fromHeight(15),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(),
       ),
     );
   }
 
   bool homeColor = true;
   bool profileColor = false;
-  bool jobprogressColor = false;
-  bool jobsColor = false;
+
   bool settingColor = false;
 
   Widget _buildMyDrawer() {
@@ -40,68 +53,27 @@ class _HomepageState extends State<Homepage> {
         color: Color.fromARGB(255, 52, 58, 64),
         child: ListView(
           children: <Widget>[
+            // SizedBox(
+            //   height: 80,
+            // ),
             Container(
-                padding: EdgeInsets.symmetric(vertical: 40),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Stack(
-                      children: [
-                        // CircleAvatar(
-                        //   radius: 30,
-                        //   backgroundImage: _imageFile == null
-                        //       ? AssetImage("images/User.jpg") as ImageProvider
-                        //       : FileImage(File(_imageFile!.path)),
-                        // ),
-                        // Positioned(
-                        //     bottom: 4,
-                        //     right: 2,
-                        //     child: InkWell(
-                        //       onTap: () {
-                        //         showModalBottomSheet(
-                        //           context: context,
-                        //           builder: ((builder) => bottomSheet()),
-                        //         );
-                        //       },
-                        //       child: Icon(
-                        //         Icons.camera_alt,
-                        //         color: Color.fromRGBO(50, 75, 205, 1),
-                        //         size: 20,
-                        //       ),
-                        //     ))
-                      ],
-                    ),
-                    // CircleAvatar(
-                    //   radius: 30,
-                    //   backgroundImage: AssetImage("images/Emma.jpg"),
-                    // ),
-                    SizedBox(width: 20),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Username",
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          "Email address",
-                          style: TextStyle(fontSize: 14, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ],
-                )),
+              height: 80,
+              padding: EdgeInsets.all(20),
+              child: Text(
+                'SuperCash',
+                style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.grey[200],
+                    fontStyle: FontStyle.italic),
+              ),
+            ),
             ListTile(
               selected: homeColor,
               onTap: () {
                 setState(() {
                   homeColor = true;
                   profileColor = false;
-                  jobprogressColor = false;
-                  jobsColor = false;
+
                   settingColor = false;
                 });
               },
@@ -120,8 +92,7 @@ class _HomepageState extends State<Homepage> {
                 setState(() {
                   homeColor = true;
                   profileColor = false;
-                  jobprogressColor = false;
-                  jobsColor = false;
+
                   settingColor = false;
                 });
                 // Navigator.of(context).pushReplacement(
@@ -131,57 +102,24 @@ class _HomepageState extends State<Homepage> {
               title: Text("Profile"),
             ),
             ListTile(
-              selected: jobprogressColor,
-              onTap: () {
-                setState(() {
-                  homeColor = true;
-                  profileColor = false;
-                  jobprogressColor = false;
-                  jobsColor = false;
-                  settingColor = false;
-                });
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (ctx) => Jobprogress()));
-              },
-              leading: Icon(Icons.pending_actions),
-              title: Text("Job Progress"),
-            ),
-            ListTile(
-              selected: jobsColor,
-              onTap: () {
-                setState(() {
-                  homeColor = true;
-                  profileColor = false;
-                  jobprogressColor = false;
-                  jobsColor = false;
-                  settingColor = false;
-                });
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (ctx) => Jobs()));
-              },
-              leading: Icon(Icons.work),
-              title: Text("Jobs"),
-            ),
-            ListTile(
               selected: settingColor,
               onTap: () {
                 setState(() {
                   homeColor = true;
                   profileColor = false;
-                  jobprogressColor = false;
-                  jobsColor = false;
+
                   settingColor = false;
                 });
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (ctx) => Setting()));
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (ctx) => Settings()));
               },
               leading: Icon(Icons.settings),
               title: Text("Setting"),
             ),
             ListTile(
               onTap: () {
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (ctx) => Dashboard()));
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (ctx) => Login()));
               },
               leading: Icon(Icons.exit_to_app),
               title: Text("Logout"),
