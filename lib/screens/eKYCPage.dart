@@ -5,6 +5,7 @@ import 'package:cnic_scanner/model/cnic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:supercash_mobile_app/screens/eKYCSample.dart';
+import 'package:supercash_mobile_app/screens/facialRecogition.dart';
 import 'package:supercash_mobile_app/screens/settingsPage.dart';
 
 class eKYCPage extends StatefulWidget {
@@ -105,10 +106,10 @@ class _eKYCPageState extends State<eKYCPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Front Identity Card',
+                  'Front NRIC',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -144,10 +145,10 @@ class _eKYCPageState extends State<eKYCPage> {
                   height: 20,
                 ),
                 Text(
-                  'Back Identity Card',
+                  'Back NRIC',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -180,7 +181,30 @@ class _eKYCPageState extends State<eKYCPage> {
                         ),
                 ),
               ],
-            )
+            ),
+            Container(
+              height: 50,
+              margin: EdgeInsets.fromLTRB(90, 45, 90, 45),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (ctx) => FacialRecognition()));
+                },
+                child: Text(
+                  'Confirm',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(255, 0, 46, 55)),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    side: MaterialStateProperty.all(
+                        BorderSide(color: Color.fromARGB(255, 35, 73, 80)))),
+              ),
+            ),
           ],
         ),
       ),
