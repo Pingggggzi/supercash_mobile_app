@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:supercash_mobile_app/screens/eKYCPage.dart';
+import 'package:supercash_mobile_app/screens/processing.dart';
 import 'package:supercash_mobile_app/screens/questions.dart';
+import 'package:chewie/chewie.dart';
+import 'package:video_player/video_player.dart';
 
 class FacialRecognition extends StatefulWidget {
   const FacialRecognition({Key? key}) : super(key: key);
@@ -10,6 +16,19 @@ class FacialRecognition extends StatefulWidget {
 }
 
 class _FacialRecognitionState extends State<FacialRecognition> {
+  PickedFile? _videoFile;
+  final ImagePicker _picker = ImagePicker();
+
+  _record(ImageSource source) async {
+    final pickedFile = await _picker.getVideo(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        _videoFile = pickedFile;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,11 +96,30 @@ class _FacialRecognitionState extends State<FacialRecognition> {
                   ),
                   Container(
                     margin: EdgeInsets.all(20),
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.fromLTRB(60, 15, 60, 15),
                     height: 240,
                     width: double.infinity,
                     decoration:
                         BoxDecoration(border: Border.all(color: Colors.grey)),
+                    child: Container(
+                      child: _videoFile == null
+                          ? Image(image: AssetImage('images/user.png'))
+                          : FittedBox(
+                              fit: BoxFit.contain,
+                              child: mounted
+                                  ? Chewie(
+                                      controller: ChewieController(
+                                        videoPlayerController:
+                                            VideoPlayerController.file(
+                                                File(_videoFile!.path)),
+                                        aspectRatio: 3 / 2,
+                                        autoPlay: true,
+                                        looping: true,
+                                      ),
+                                    )
+                                  : Container(),
+                            ),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.fromLTRB(80, 0, 80, 30),
@@ -109,7 +147,9 @@ class _FacialRecognitionState extends State<FacialRecognition> {
                           ),
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _record(ImageSource.camera);
+                      },
                     ),
                   )
                 ],
@@ -141,10 +181,19 @@ class _FacialRecognitionState extends State<FacialRecognition> {
                 SizedBox(
                   height: 5,
                 ),
-                Text(
-                  '@ Copyright CTOS Data Systems Sdn Bhd. All Rrights Reserved.',
-                  style: TextStyle(color: Colors.white, fontSize: 14),
-                )
+                Row(
+                  children: [
+                    Icon(
+                      Icons.copyright,
+                      color: Colors.white,
+                      size: 14,
+                    ),
+                    Text(
+                      ' Copyright CTOS Data Systems Sdn Bhd. All Rrights Reserved.',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                  ],
+                ),
               ]),
             ),
             Container(
@@ -153,7 +202,7 @@ class _FacialRecognitionState extends State<FacialRecognition> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => Questions()));
+                      MaterialPageRoute(builder: (ctx) => ProcessingPage()));
                 },
                 child: Text(
                   'Confirm',

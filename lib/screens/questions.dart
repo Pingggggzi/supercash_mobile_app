@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supercash_mobile_app/screens/facialRecogition.dart';
+import 'package:supercash_mobile_app/screens/verified.dart';
 
 class Questions extends StatefulWidget {
   const Questions({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _QuestionsState extends State<Questions> {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (ctx) => FacialRecognition()));
             }),
-        title: Text("Verification"),
+        title: Text("Question Verification"),
         backgroundColor: Color.fromARGB(255, 52, 58, 64),
       ),
       body: Container(
@@ -34,70 +35,361 @@ class _QuestionsState extends State<Questions> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Your identity has been verified',
+                      'Verification Questions',
                       style: TextStyle(color: Colors.white, fontSize: 22),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    Icon(
-                      Icons.check_circle,
-                      color: Colors.green,
-                      size: 50,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
                     Text(
-                      'CTOS ID account successfully verified. You may continue using CTOS ID from your computer.',
+                      'Please answer below questions correctly',
                       style: TextStyle(color: Colors.white, fontSize: 15),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 150,
+                          child: Text(
+                            '1.Do you have a House Loan with Citibank?',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Container(
+                          height: 70,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'Yes',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'No',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 150,
+                          child: Text(
+                            '2.Do you have a Credit Card with CIMB?',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Container(
+                          height: 70,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'Yes',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'No',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 150,
+                          child: Text(
+                            '3.Do you have a Credit Card with Ambank?',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Container(
+                          height: 70,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'Yes',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'No',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 150,
+                          child: Text(
+                            '4.Do you have a Credit Card with Citibank?',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Container(
+                          height: 70,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'Yes',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'No',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 150,
+                          child: Text(
+                            '5.Do you have a Car Loan with Public Bank?',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Container(
+                          height: 70,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'Yes',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                  height: 50,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: FlatButton(
+                                    child: Text(
+                                      'No',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                    ),
+                                    onPressed: () {},
+                                  )),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
                       height: 50,
-                    ),
-                    TextButton(
-                        onPressed: () {},
+                      width: 200,
+                      // margin: EdgeInsets.fromLTRB(90, 45, 90, 45),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (ctx) => IdVerified()));
+                        },
                         child: Text(
-                          'Click here or wait for 7 seconds to redirect.',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 107, 227, 237),
-                              decoration: TextDecoration.underline,
-                              fontSize: 15),
-                        ))
+                          'Confirm',
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromARGB(255, 0, 46, 55)),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                            ),
+                            side: MaterialStateProperty.all(BorderSide(
+                                color: Color.fromARGB(255, 35, 73, 80)))),
+                      ),
+                    ),
                   ]),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'powered by',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-                    Text(
-                      ' cto',
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 3, 84, 95), fontSize: 18),
-                    ),
-                    Text(
-                      's',
-                      style: TextStyle(color: Colors.red[900], fontSize: 18),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  '@ Copyright CTOS Data Systems Sdn Bhd. All Rrights Reserved.',
-                  style: TextStyle(color: Colors.white, fontSize: 14),
-                )
-              ]),
             ),
           ])),
     );
