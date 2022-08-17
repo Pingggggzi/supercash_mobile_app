@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supercash_mobile_app/screens/eKYCPage.dart';
+import 'package:supercash_mobile_app/screens/ekycWeb.dart';
 import 'package:supercash_mobile_app/screens/home.dart';
 import 'package:supercash_mobile_app/screens/passwordSetting.dart';
 
@@ -145,7 +146,7 @@ class _SettingsState extends State<Settings> {
                     ),
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (ctx) => eKYCPage()));
+                          MaterialPageRoute(builder: (ctx) => ekycWeb()));
                     },
                   )
                 ],

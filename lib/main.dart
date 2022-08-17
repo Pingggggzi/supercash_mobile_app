@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:supercash_mobile_app/screens/addBrrower.dart';
 import 'package:supercash_mobile_app/screens/home.dart';
 import 'package:supercash_mobile_app/screens/signup.dart';
+import 'package:supercash_mobile_app/widgets/borrowerForm.dart';
 
 void main() {
   runApp(const MyApp());

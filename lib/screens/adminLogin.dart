@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:supercash_mobile_app/screens/adminLogin.dart';
-import 'package:supercash_mobile_app/screens/home.dart';
-import 'package:supercash_mobile_app/screens/signup.dart';
+import 'package:supercash_mobile_app/screens/adminHome.dart';
 import '../widgets/changeScreen.dart';
 import '../widgets/myTextFormField.dart';
-import '../widgets/mybutton.dart';
 import '../widgets/passwordTextFormField.dart';
+import 'login.dart';
 
-class Login extends StatefulWidget {
+class AdminLogin extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  State<AdminLogin> createState() => _AdminLoginState();
 }
 
 GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -26,7 +24,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 bool obserText = true;
 
-class _LoginState extends State<Login> {
+class _AdminLoginState extends State<AdminLogin> {
   void submit(context) async {
     try {
       setState(() {
@@ -113,8 +111,8 @@ class _LoginState extends State<Login> {
                 children: [
                   IconButton(
                       onPressed: () {
-                        // Navigator.of(context).pushReplacement(
-                        //     MaterialPageRoute(builder: (ctx) => Dashboard()));
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (ctx) => Login()));
                       },
                       icon: Icon(Icons.arrow_back)),
                 ],
@@ -129,7 +127,7 @@ class _LoginState extends State<Login> {
                 Column(
                   children: <Widget>[
                     Text(
-                      "Login",
+                      "Admin",
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
@@ -160,15 +158,22 @@ class _LoginState extends State<Login> {
                       height: 10,
                     ),
                     isLoading == false
-                        ? MyButton(
-                            onPressed: () {
-                              vaildation();
-
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (ctx) => Homepage()));
-                            },
-                            name: "Login",
+                        ? Container(
+                            height: 45,
+                            width: double.infinity,
+                            child: RaisedButton(
+                              child: Text(
+                                'Login',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              color: Color.fromARGB(255, 23, 162, 184),
+                              onPressed: () {
+                                vaildation();
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (ctx) => AdminHome()));
+                              },
+                            ),
                           )
                         : Center(
                             child: CircularProgressIndicator(),
@@ -176,13 +181,6 @@ class _LoginState extends State<Login> {
                     SizedBox(
                       height: 10,
                     ),
-                    ChangeScreen(
-                        name: "SignUp",
-                        whichAccount: "No Account?",
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (ctx) => SignUp()));
-                        }),
                   ],
                 ),
                 SizedBox(
@@ -194,12 +192,12 @@ class _LoginState extends State<Login> {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (ctx) => AdminLogin(),
+                              builder: (ctx) => Login(),
                             ),
                           );
                         },
                         child: Text(
-                          'I Am Admin',
+                          'I Am Customer',
                           style: TextStyle(fontSize: 18),
                         ))
                   ],
@@ -222,10 +220,10 @@ class _LoginState extends State<Login> {
         child: Container(
           // decoration: BoxDecoration(
           //     image: DecorationImage(
-          //         image: AssetImage('images/loginBackground1.jpg'),
+          //         image: AssetImage('images/loginBackground2.png'),
           //         fit: BoxFit.cover,
           //         colorFilter: ColorFilter.mode(
-          //             Colors.white.withOpacity(0.2), BlendMode.lighten))),
+          //             Colors.white.withOpacity(0.3), BlendMode.lighten))),
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
             child: Column(
