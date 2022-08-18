@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:supercash_mobile_app/models/post.dart';
 import 'package:supercash_mobile_app/screens/eKYCPage.dart';
 import 'package:supercash_mobile_app/screens/ekycWeb.dart';
 import 'package:supercash_mobile_app/screens/home.dart';
 import 'package:supercash_mobile_app/screens/passwordSetting.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -15,6 +18,15 @@ class _SettingsState extends State<Settings> {
   @override
   String? valueChoose;
   List listItem = ['English', '中文'];
+  late Post post;
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    // post = await Post.connectToAPI(api_key, package_name, ref_id, signature, onboarding_id, onboarding_url, expired_at, error_code);
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,8 +157,8 @@ class _SettingsState extends State<Settings> {
                       size: 25,
                     ),
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (ctx) => ekycWeb()));
+                      // Navigator.of(context).pushReplacement(
+                      //     MaterialPageRoute(builder: (ctx) => ekycWeb()));
                     },
                   )
                 ],
@@ -177,8 +189,8 @@ class _SettingsState extends State<Settings> {
                       size: 25,
                     ),
                     onPressed: () {
-                      // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      //     builder: (ctx) => Passwordsetting()));
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (ctx) => ekycWeb()));
                     },
                   )
                 ],

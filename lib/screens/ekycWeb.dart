@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:supercash_mobile_app/screens/settingsPage.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -46,7 +45,8 @@ class _ekycWebState extends State<ekycWeb> {
       ),
       body: WebView(
         javascriptMode: JavascriptMode.unrestricted,
-        initialUrl: 'https://flutter.dev',
+        initialUrl:
+            'https://uat-eonboarding.ctos.com.my/cgw/#/error?token=8983e438a81d724c97286c3ba4026d08superceedref_id_18_1660643868',
         onWebViewCreated: (controller) {
           this.controller = controller;
         },
