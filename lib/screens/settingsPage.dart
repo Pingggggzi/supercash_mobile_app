@@ -41,24 +41,24 @@ class _SettingsState extends State<Settings> {
   @override
   String? valueChoose;
   List listItem = ['English', '中文'];
-  late Post post;
+  // late Post post;
 
-  void initState() {
-    super.initState();
-    getData();
-  }
+  // void initState() {
+  //   super.initState();
+  //   getData();
+  // }
 
-  getData() async {
-    post = await Post.connectToAPI(
-        'api_key',
-        'package_name',
-        'ref_id',
-        'signature',
-        ' onboarding_id',
-        'https://ekyc.ctos.com.my/#/guideline?token=9a57f93ce230147b4f0b83c29029224d62021021',
-        '2020-04-17 14:14:17',
-        'error_code');
-  }
+  // getData() async {
+  //   post = await Post.connectToAPI(
+  //       'api_key',
+  //       'package_name',
+  //       'ref_id',
+  //       'signature',
+  //       ' onboarding_id',
+  //       'https://ekyc.ctos.com.my/#/guideline?token=9a57f93ce230147b4f0b83c29029224d62021021',
+  //       '2020-04-17 14:14:17',
+  //       'error_code');
+  // }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,8 +189,8 @@ class _SettingsState extends State<Settings> {
                       size: 25,
                     ),
                     onPressed: () {
-                      // Navigator.of(context).pushReplacement(
-                      //     MaterialPageRoute(builder: (ctx) => ekycWeb()));
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (ctx) => eKYCPage()));
                     },
                   )
                 ],
@@ -221,7 +221,7 @@ class _SettingsState extends State<Settings> {
                       size: 25,
                     ),
                     onPressed: () {
-                      getData();
+                      // getData();
                       Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (ctx) => ekycWeb()));
                     },
